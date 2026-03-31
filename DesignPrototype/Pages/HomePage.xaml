@@ -121,7 +121,7 @@
                 </Grid.RowDefinitions>
 
                 <!-- ═══════════════════════════════════════════════════════ -->
-                <!--  3 ТАБЛИЦЫ ЛИДЕРОВ                                      -->
+                <!--  3 ТАБЛИЦЫ ЛИДЕРОВ С ДАННЫМИ                            -->
                 <!-- ═══════════════════════════════════════════════════════ -->
                 <Grid Grid.Row="0">
                     <Grid.ColumnDefinitions>
@@ -143,51 +143,355 @@
                             </Grid.RowDefinitions>
 
                             <TextBlock Grid.Row="0" Text="📊 Лидеры по обороту" 
-                               FontSize="12" FontWeight="Bold" 
-                               Foreground="White"
-                               Margin="10,8,10,5"/>
+                                       FontSize="12" FontWeight="Bold" 
+                                       Foreground="White"
+                                       Margin="10,8,10,5"/>
+
+                            <!-- Заголовки столбцов -->
+                            <Grid Grid.Row="0" Margin="10,35,10,5">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="50"/>
+                                    <ColumnDefinition Width="90"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <TextBlock Grid.Column="0" Text="Код" Foreground="#90CAF9" FontSize="10" FontWeight="Bold"/>
+                                <TextBlock Grid.Column="1" Text="Инструмент" Foreground="#90CAF9" FontSize="10" FontWeight="Bold"/>
+                                <TextBlock Grid.Column="2" Text="Оборот" Foreground="#90CAF9" FontSize="10" FontWeight="Bold" HorizontalAlignment="Right"/>
+                            </Grid>
 
                             <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Hidden" Margin="10,0,10,8">
-                                <DataGrid AutoGenerateColumns="False"
-                                  HeadersVisibility="Column"
-                                  Background="#1E1E1E"
-                                  RowBackground="#1E1E1E"
-                                  AlternatingRowBackground="#252525"
-                                  Foreground="White"
-                                  BorderThickness="0"
-                                  GridLinesVisibility="Horizontal"
-                                  HorizontalGridLinesBrush="#404040"
-                                  FontSize="11"
-                                  FontFamily="Consolas"
-                                  CanUserAddRows="False"
-                                  IsReadOnly="True">
-                                    <DataGrid.ColumnHeaderStyle>
-                                        <Style TargetType="DataGridColumnHeader">
-                                            <Setter Property="Background" Value="#2A2A2A"/>
-                                            <Setter Property="Foreground" Value="#90CAF9"/>
-                                            <Setter Property="Padding" Value="5,4"/>
-                                            <Setter Property="FontWeight" Value="Bold"/>
-                                            <Setter Property="FontSize" Value="10"/>
-                                        </Style>
-                                    </DataGrid.ColumnHeaderStyle>
-                                    <DataGrid.Columns>
-                                        <DataGridTextColumn Header="Код" Width="50"/>
-                                        <DataGridTextColumn Header="Инструмент" Width="70"/>
-                                        <DataGridTextColumn Header="Оборот" Width="80"/>
-                                    </DataGrid.Columns>
-                                    <DataGrid.RowStyle>
-                                        <Style TargetType="DataGridRow">
-                                            <Style.Triggers>
-                                                <DataTrigger Binding="{Binding IsUp}" Value="True">
-                                                    <Setter Property="Background" Value="#1B5E20"/>
-                                                </DataTrigger>
-                                                <DataTrigger Binding="{Binding IsUp}" Value="False">
-                                                    <Setter Property="Background" Value="#B71C1C"/>
-                                                </DataTrigger>
-                                            </Style.Triggers>
-                                        </Style>
-                                    </DataGrid.RowStyle>
-                                </DataGrid>
+                                <StackPanel>
+                                    <!-- GAZP -->
+                                    <Grid Margin="0,0,0,2">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="50"/>
+                                            <ColumnDefinition Width="90"/>
+                                            <ColumnDefinition Width="*"/>
+                                        </Grid.ColumnDefinitions>
+                                        <TextBlock Grid.Column="0" Text="GAZP" Foreground="#4CAF50" FontSize="11" FontFamily="Consolas"/>
+                                        <TextBlock Grid.Column="1" Text="ГАЗПРОМ ао" Foreground="White" FontSize="11"/>
+                                        <TextBlock Grid.Column="2" Text="8 274 229" Foreground="White" FontSize="11" HorizontalAlignment="Right"/>
+                                    </Grid>
+                                    <!-- ROSN -->
+                                    <Grid Margin="0,0,0,2">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="50"/>
+                                            <ColumnDefinition Width="90"/>
+                                            <ColumnDefinition Width="*"/>
+                                        </Grid.ColumnDefinitions>
+                                        <TextBlock Grid.Column="0" Text="ROSN" Foreground="#4CAF50" FontSize="11" FontFamily="Consolas"/>
+                                        <TextBlock Grid.Column="1" Text="Роснефть" Foreground="White" FontSize="11"/>
+                                        <TextBlock Grid.Column="2" Text="4 773 269" Foreground="White" FontSize="11" HorizontalAlignment="Right"/>
+                                    </Grid>
+                                    <!-- VTBR -->
+                                    <Grid Margin="0,0,0,2">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="50"/>
+                                            <ColumnDefinition Width="90"/>
+                                            <ColumnDefinition Width="*"/>
+                                        </Grid.ColumnDefinitions>
+                                        <TextBlock Grid.Column="0" Text="VTBR" Foreground="#4CAF50" FontSize="11" FontFamily="Consolas"/>
+                                        <TextBlock Grid.Column="1" Text="ВТБ ао" Foreground="White" FontSize="11"/>
+                                        <TextBlock Grid.Column="2" Text="3 041 722" Foreground="White" FontSize="11" HorizontalAlignment="Right"/>
+                                    </Grid>
+                                    <!-- PLZL -->
+                                    <Grid Margin="0,0,0,2">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="50"/>
+                                            <ColumnDefinition Width="90"/>
+                                            <ColumnDefinition Width="*"/>
+                                        </Grid.ColumnDefinitions>
+                                        <TextBlock Grid.Column="0" Text="PLZL" Foreground="#4CAF50" FontSize="11" FontFamily="Consolas"/>
+                                        <TextBlock Grid.Column="1" Text="Полюс" Foreground="White" FontSize="11"/>
+                                        <TextBlock Grid.Column="2" Text="2 637 315" Foreground="White" FontSize="11" HorizontalAlignment="Right"/>
+                                    </Grid>
+                                    <!-- NVTK -->
+                                    <Grid Margin="0,0,0,2">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="50"/>
+                                            <ColumnDefinition Width="90"/>
+                                            <ColumnDefinition Width="*"/>
+                                        </Grid.ColumnDefinitions>
+                                        <TextBlock Grid.Column="0" Text="NVTK" Foreground="#4CAF50" FontSize="11" FontFamily="Consolas"/>
+                                        <TextBlock Grid.Column="1" Text="Новатэк ао" Foreground="White" FontSize="11"/>
+                                        <TextBlock Grid.Column="2" Text="2 547 892" Foreground="White" FontSize="11" HorizontalAlignment="Right"/>
+                                    </Grid>
+                                    <!-- SBER -->
+                                    <Grid Margin="0,0,0,2">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="50"/>
+                                            <ColumnDefinition Width="90"/>
+                                            <ColumnDefinition Width="*"/>
+                                        </Grid.ColumnDefinitions>
+                                        <TextBlock Grid.Column="0" Text="SBER" Foreground="#4CAF50" FontSize="11" FontFamily="Consolas"/>
+                                        <TextBlock Grid.Column="1" Text="Сбербанк" Foreground="White" FontSize="11"/>
+                                        <TextBlock Grid.Column="2" Text="2 323 414" Foreground="White" FontSize="11" HorizontalAlignment="Right"/>
+                                    </Grid>
+                                    <!-- LKOH -->
+                                    <Grid Margin="0,0,0,2">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="50"/>
+                                            <ColumnDefinition Width="90"/>
+                                            <ColumnDefinition Width="*"/>
+                                        </Grid.ColumnDefinitions>
+                                        <TextBlock Grid.Column="0" Text="LKOH" Foreground="#F44336" FontSize="11" FontFamily="Consolas"/>
+                                        <TextBlock Grid.Column="1" Text="ЛУКОЙЛ" Foreground="White" FontSize="11"/>
+                                        <TextBlock Grid.Column="2" Text="2 281 275" Foreground="White" FontSize="11" HorizontalAlignment="Right"/>
+                                    </Grid>
+                                    <!-- GMKN -->
+                                    <Grid Margin="0,0,0,2">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="50"/>
+                                            <ColumnDefinition Width="90"/>
+                                            <ColumnDefinition Width="*"/>
+                                        </Grid.ColumnDefinitions>
+                                        <TextBlock Grid.Column="0" Text="GMKN" Foreground="#4CAF50" FontSize="11" FontFamily="Consolas"/>
+                                        <TextBlock Grid.Column="1" Text="ГМКНорНик" Foreground="White" FontSize="11"/>
+                                        <TextBlock Grid.Column="2" Text="1 668 192" Foreground="White" FontSize="11" HorizontalAlignment="Right"/>
+                                    </Grid>
+                                    <!-- TATN -->
+                                    <Grid Margin="0,0,0,2">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="50"/>
+                                            <ColumnDefinition Width="90"/>
+                                            <ColumnDefinition Width="*"/>
+                                        </Grid.ColumnDefinitions>
+                                        <TextBlock Grid.Column="0" Text="TATN" Foreground="#4CAF50" FontSize="11" FontFamily="Consolas"/>
+                                        <TextBlock Grid.Column="1" Text="Татнефт ао" Foreground="White" FontSize="11"/>
+                                        <TextBlock Grid.Column="2" Text="1 107 202" Foreground="White" FontSize="11" HorizontalAlignment="Right"/>
+                                    </Grid>
+                                    <!-- ALRS -->
+                                    <Grid Margin="0,0,0,2">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="50"/>
+                                            <ColumnDefinition Width="90"/>
+                                            <ColumnDefinition Width="*"/>
+                                        </Grid.ColumnDefinitions>
+                                        <TextBlock Grid.Column="0" Text="ALRS" Foreground="#F44336" FontSize="11" FontFamily="Consolas"/>
+                                        <TextBlock Grid.Column="1" Text="АЛРОСА" Foreground="White" FontSize="11"/>
+                                        <TextBlock Grid.Column="2" Text="588 139" Foreground="White" FontSize="11" HorizontalAlignment="Right"/>
+                                    </Grid>
+                                    <!-- GAZP -->
+                                    <Grid Margin="0,0,0,2">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="50"/>
+                                            <ColumnDefinition Width="90"/>
+                                            <ColumnDefinition Width="*"/>
+                                        </Grid.ColumnDefinitions>
+                                        <TextBlock Grid.Column="0" Text="GAZP" Foreground="#4CAF50" FontSize="11" FontFamily="Consolas"/>
+                                        <TextBlock Grid.Column="1" Text="ГАЗПРОМ ао" Foreground="White" FontSize="11"/>
+                                        <TextBlock Grid.Column="2" Text="8 274 229" Foreground="White" FontSize="11" HorizontalAlignment="Right"/>
+                                    </Grid>
+                                    <!-- ROSN -->
+                                    <Grid Margin="0,0,0,2">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="50"/>
+                                            <ColumnDefinition Width="90"/>
+                                            <ColumnDefinition Width="*"/>
+                                        </Grid.ColumnDefinitions>
+                                        <TextBlock Grid.Column="0" Text="ROSN" Foreground="#4CAF50" FontSize="11" FontFamily="Consolas"/>
+                                        <TextBlock Grid.Column="1" Text="Роснефть" Foreground="White" FontSize="11"/>
+                                        <TextBlock Grid.Column="2" Text="4 773 269" Foreground="White" FontSize="11" HorizontalAlignment="Right"/>
+                                    </Grid>
+                                    <!-- VTBR -->
+                                    <Grid Margin="0,0,0,2">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="50"/>
+                                            <ColumnDefinition Width="90"/>
+                                            <ColumnDefinition Width="*"/>
+                                        </Grid.ColumnDefinitions>
+                                        <TextBlock Grid.Column="0" Text="VTBR" Foreground="#4CAF50" FontSize="11" FontFamily="Consolas"/>
+                                        <TextBlock Grid.Column="1" Text="ВТБ ао" Foreground="White" FontSize="11"/>
+                                        <TextBlock Grid.Column="2" Text="3 041 722" Foreground="White" FontSize="11" HorizontalAlignment="Right"/>
+                                    </Grid>
+                                    <!-- PLZL -->
+                                    <Grid Margin="0,0,0,2">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="50"/>
+                                            <ColumnDefinition Width="90"/>
+                                            <ColumnDefinition Width="*"/>
+                                        </Grid.ColumnDefinitions>
+                                        <TextBlock Grid.Column="0" Text="PLZL" Foreground="#4CAF50" FontSize="11" FontFamily="Consolas"/>
+                                        <TextBlock Grid.Column="1" Text="Полюс" Foreground="White" FontSize="11"/>
+                                        <TextBlock Grid.Column="2" Text="2 637 315" Foreground="White" FontSize="11" HorizontalAlignment="Right"/>
+                                    </Grid>
+                                    <!-- NVTK -->
+                                    <Grid Margin="0,0,0,2">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="50"/>
+                                            <ColumnDefinition Width="90"/>
+                                            <ColumnDefinition Width="*"/>
+                                        </Grid.ColumnDefinitions>
+                                        <TextBlock Grid.Column="0" Text="NVTK" Foreground="#4CAF50" FontSize="11" FontFamily="Consolas"/>
+                                        <TextBlock Grid.Column="1" Text="Новатэк ао" Foreground="White" FontSize="11"/>
+                                        <TextBlock Grid.Column="2" Text="2 547 892" Foreground="White" FontSize="11" HorizontalAlignment="Right"/>
+                                    </Grid>
+                                    <!-- SBER -->
+                                    <Grid Margin="0,0,0,2">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="50"/>
+                                            <ColumnDefinition Width="90"/>
+                                            <ColumnDefinition Width="*"/>
+                                        </Grid.ColumnDefinitions>
+                                        <TextBlock Grid.Column="0" Text="SBER" Foreground="#4CAF50" FontSize="11" FontFamily="Consolas"/>
+                                        <TextBlock Grid.Column="1" Text="Сбербанк" Foreground="White" FontSize="11"/>
+                                        <TextBlock Grid.Column="2" Text="2 323 414" Foreground="White" FontSize="11" HorizontalAlignment="Right"/>
+                                    </Grid>
+                                    <!-- LKOH -->
+                                    <Grid Margin="0,0,0,2">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="50"/>
+                                            <ColumnDefinition Width="90"/>
+                                            <ColumnDefinition Width="*"/>
+                                        </Grid.ColumnDefinitions>
+                                        <TextBlock Grid.Column="0" Text="LKOH" Foreground="#F44336" FontSize="11" FontFamily="Consolas"/>
+                                        <TextBlock Grid.Column="1" Text="ЛУКОЙЛ" Foreground="White" FontSize="11"/>
+                                        <TextBlock Grid.Column="2" Text="2 281 275" Foreground="White" FontSize="11" HorizontalAlignment="Right"/>
+                                    </Grid>
+                                    <!-- GMKN -->
+                                    <Grid Margin="0,0,0,2">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="50"/>
+                                            <ColumnDefinition Width="90"/>
+                                            <ColumnDefinition Width="*"/>
+                                        </Grid.ColumnDefinitions>
+                                        <TextBlock Grid.Column="0" Text="GMKN" Foreground="#4CAF50" FontSize="11" FontFamily="Consolas"/>
+                                        <TextBlock Grid.Column="1" Text="ГМКНорНик" Foreground="White" FontSize="11"/>
+                                        <TextBlock Grid.Column="2" Text="1 668 192" Foreground="White" FontSize="11" HorizontalAlignment="Right"/>
+                                    </Grid>
+                                    <!-- TATN -->
+                                    <Grid Margin="0,0,0,2">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="50"/>
+                                            <ColumnDefinition Width="90"/>
+                                            <ColumnDefinition Width="*"/>
+                                        </Grid.ColumnDefinitions>
+                                        <TextBlock Grid.Column="0" Text="TATN" Foreground="#4CAF50" FontSize="11" FontFamily="Consolas"/>
+                                        <TextBlock Grid.Column="1" Text="Татнефт ао" Foreground="White" FontSize="11"/>
+                                        <TextBlock Grid.Column="2" Text="1 107 202" Foreground="White" FontSize="11" HorizontalAlignment="Right"/>
+                                    </Grid>
+                                    <!-- ALRS -->
+                                    <Grid Margin="0,0,0,2">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="50"/>
+                                            <ColumnDefinition Width="90"/>
+                                            <ColumnDefinition Width="*"/>
+                                        </Grid.ColumnDefinitions>
+                                        <TextBlock Grid.Column="0" Text="ALRS" Foreground="#F44336" FontSize="11" FontFamily="Consolas"/>
+                                        <TextBlock Grid.Column="1" Text="АЛРОСА" Foreground="White" FontSize="11"/>
+                                        <TextBlock Grid.Column="2" Text="588 139" Foreground="White" FontSize="11" HorizontalAlignment="Right"/>
+                                    </Grid>
+                                    <!-- GAZP -->
+                                    <Grid Margin="0,0,0,2">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="50"/>
+                                            <ColumnDefinition Width="90"/>
+                                            <ColumnDefinition Width="*"/>
+                                        </Grid.ColumnDefinitions>
+                                        <TextBlock Grid.Column="0" Text="GAZP" Foreground="#4CAF50" FontSize="11" FontFamily="Consolas"/>
+                                        <TextBlock Grid.Column="1" Text="ГАЗПРОМ ао" Foreground="White" FontSize="11"/>
+                                        <TextBlock Grid.Column="2" Text="8 274 229" Foreground="White" FontSize="11" HorizontalAlignment="Right"/>
+                                    </Grid>
+                                    <!-- ROSN -->
+                                    <Grid Margin="0,0,0,2">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="50"/>
+                                            <ColumnDefinition Width="90"/>
+                                            <ColumnDefinition Width="*"/>
+                                        </Grid.ColumnDefinitions>
+                                        <TextBlock Grid.Column="0" Text="ROSN" Foreground="#4CAF50" FontSize="11" FontFamily="Consolas"/>
+                                        <TextBlock Grid.Column="1" Text="Роснефть" Foreground="White" FontSize="11"/>
+                                        <TextBlock Grid.Column="2" Text="4 773 269" Foreground="White" FontSize="11" HorizontalAlignment="Right"/>
+                                    </Grid>
+                                    <!-- VTBR -->
+                                    <Grid Margin="0,0,0,2">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="50"/>
+                                            <ColumnDefinition Width="90"/>
+                                            <ColumnDefinition Width="*"/>
+                                        </Grid.ColumnDefinitions>
+                                        <TextBlock Grid.Column="0" Text="VTBR" Foreground="#4CAF50" FontSize="11" FontFamily="Consolas"/>
+                                        <TextBlock Grid.Column="1" Text="ВТБ ао" Foreground="White" FontSize="11"/>
+                                        <TextBlock Grid.Column="2" Text="3 041 722" Foreground="White" FontSize="11" HorizontalAlignment="Right"/>
+                                    </Grid>
+                                    <!-- PLZL -->
+                                    <Grid Margin="0,0,0,2">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="50"/>
+                                            <ColumnDefinition Width="90"/>
+                                            <ColumnDefinition Width="*"/>
+                                        </Grid.ColumnDefinitions>
+                                        <TextBlock Grid.Column="0" Text="PLZL" Foreground="#4CAF50" FontSize="11" FontFamily="Consolas"/>
+                                        <TextBlock Grid.Column="1" Text="Полюс" Foreground="White" FontSize="11"/>
+                                        <TextBlock Grid.Column="2" Text="2 637 315" Foreground="White" FontSize="11" HorizontalAlignment="Right"/>
+                                    </Grid>
+                                    <!-- NVTK -->
+                                    <Grid Margin="0,0,0,2">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="50"/>
+                                            <ColumnDefinition Width="90"/>
+                                            <ColumnDefinition Width="*"/>
+                                        </Grid.ColumnDefinitions>
+                                        <TextBlock Grid.Column="0" Text="NVTK" Foreground="#4CAF50" FontSize="11" FontFamily="Consolas"/>
+                                        <TextBlock Grid.Column="1" Text="Новатэк ао" Foreground="White" FontSize="11"/>
+                                        <TextBlock Grid.Column="2" Text="2 547 892" Foreground="White" FontSize="11" HorizontalAlignment="Right"/>
+                                    </Grid>
+                                    <!-- SBER -->
+                                    <Grid Margin="0,0,0,2">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="50"/>
+                                            <ColumnDefinition Width="90"/>
+                                            <ColumnDefinition Width="*"/>
+                                        </Grid.ColumnDefinitions>
+                                        <TextBlock Grid.Column="0" Text="SBER" Foreground="#4CAF50" FontSize="11" FontFamily="Consolas"/>
+                                        <TextBlock Grid.Column="1" Text="Сбербанк" Foreground="White" FontSize="11"/>
+                                        <TextBlock Grid.Column="2" Text="2 323 414" Foreground="White" FontSize="11" HorizontalAlignment="Right"/>
+                                    </Grid>
+                                    <!-- LKOH -->
+                                    <Grid Margin="0,0,0,2">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="50"/>
+                                            <ColumnDefinition Width="90"/>
+                                            <ColumnDefinition Width="*"/>
+                                        </Grid.ColumnDefinitions>
+                                        <TextBlock Grid.Column="0" Text="LKOH" Foreground="#F44336" FontSize="11" FontFamily="Consolas"/>
+                                        <TextBlock Grid.Column="1" Text="ЛУКОЙЛ" Foreground="White" FontSize="11"/>
+                                        <TextBlock Grid.Column="2" Text="2 281 275" Foreground="White" FontSize="11" HorizontalAlignment="Right"/>
+                                    </Grid>
+                                    <!-- GMKN -->
+                                    <Grid Margin="0,0,0,2">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="50"/>
+                                            <ColumnDefinition Width="90"/>
+                                            <ColumnDefinition Width="*"/>
+                                        </Grid.ColumnDefinitions>
+                                        <TextBlock Grid.Column="0" Text="GMKN" Foreground="#4CAF50" FontSize="11" FontFamily="Consolas"/>
+                                        <TextBlock Grid.Column="1" Text="ГМКНорНик" Foreground="White" FontSize="11"/>
+                                        <TextBlock Grid.Column="2" Text="1 668 192" Foreground="White" FontSize="11" HorizontalAlignment="Right"/>
+                                    </Grid>
+                                    <!-- TATN -->
+                                    <Grid Margin="0,0,0,2">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="50"/>
+                                            <ColumnDefinition Width="90"/>
+                                            <ColumnDefinition Width="*"/>
+                                        </Grid.ColumnDefinitions>
+                                        <TextBlock Grid.Column="0" Text="TATN" Foreground="#4CAF50" FontSize="11" FontFamily="Consolas"/>
+                                        <TextBlock Grid.Column="1" Text="Татнефт ао" Foreground="White" FontSize="11"/>
+                                        <TextBlock Grid.Column="2" Text="1 107 202" Foreground="White" FontSize="11" HorizontalAlignment="Right"/>
+                                    </Grid>
+                                    <!-- ALRS -->
+                                    <Grid Margin="0,0,0,2">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="50"/>
+                                            <ColumnDefinition Width="90"/>
+                                            <ColumnDefinition Width="*"/>
+                                        </Grid.ColumnDefinitions>
+                                        <TextBlock Grid.Column="0" Text="ALRS" Foreground="#F44336" FontSize="11" FontFamily="Consolas"/>
+                                        <TextBlock Grid.Column="1" Text="АЛРОСА" Foreground="White" FontSize="11"/>
+                                        <TextBlock Grid.Column="2" Text="588 139" Foreground="White" FontSize="11" HorizontalAlignment="Right"/>
+                                    </Grid>
+                                </StackPanel>
                             </ScrollViewer>
                         </Grid>
                     </Border>
@@ -196,7 +500,7 @@
                     <Border Grid.Column="1" Background="#404040" Margin="0,5"/>
 
                     <!-- ═══════════════════════════════════════════════════ -->
-                    <!--  ТАБЛИЦА 2: ЛИДЕРЫ РОСТА                            -->
+                    <!--  ТАБЛИЦА 2: ЛИДЕРЫ РОСТА (все зелёные)              -->
                     <!-- ═══════════════════════════════════════════════════ -->
                     <Border Grid.Column="2" Background="#1E1E1E" CornerRadius="4">
                         <Grid>
@@ -206,44 +510,355 @@
                             </Grid.RowDefinitions>
 
                             <TextBlock Grid.Row="0" Text="📈 Лидеры роста" 
-                               FontSize="12" FontWeight="Bold" 
-                               Foreground="White"
-                               Margin="10,8,10,5"/>
+                                       FontSize="12" FontWeight="Bold" 
+                                       Foreground="White"
+                                       Margin="10,8,10,5"/>
+
+                            <!-- Заголовки столбцов -->
+                            <Grid Grid.Row="0" Margin="10,35,10,5">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="50"/>
+                                    <ColumnDefinition Width="70"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <TextBlock Grid.Column="0" Text="Код" Foreground="#90CAF9" FontSize="10" FontWeight="Bold"/>
+                                <TextBlock Grid.Column="1" Text="Инструмент" Foreground="#90CAF9" FontSize="10" FontWeight="Bold"/>
+                                <TextBlock Grid.Column="2" Text="% измен." Foreground="#90CAF9" FontSize="10" FontWeight="Bold" HorizontalAlignment="Right"/>
+                            </Grid>
 
                             <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Hidden" Margin="10,0,10,8">
-                                <DataGrid AutoGenerateColumns="False"
-                                  HeadersVisibility="Column"
-                                  Background="#1E1E1E"
-                                  RowBackground="#1E1E1E"
-                                  AlternatingRowBackground="#252525"
-                                  Foreground="White"
-                                  BorderThickness="0"
-                                  GridLinesVisibility="Horizontal"
-                                  HorizontalGridLinesBrush="#404040"
-                                  FontSize="11"
-                                  FontFamily="Consolas"
-                                  CanUserAddRows="False"
-                                  IsReadOnly="True">
-                                    <DataGrid.ColumnHeaderStyle>
-                                        <Style TargetType="DataGridColumnHeader">
-                                            <Setter Property="Background" Value="#2A2A2A"/>
-                                            <Setter Property="Foreground" Value="#90CAF9"/>
-                                            <Setter Property="Padding" Value="5,4"/>
-                                            <Setter Property="FontWeight" Value="Bold"/>
-                                            <Setter Property="FontSize" Value="10"/>
-                                        </Style>
-                                    </DataGrid.ColumnHeaderStyle>
-                                    <DataGrid.Columns>
-                                        <DataGridTextColumn Header="Код" Width="50"/>
-                                        <DataGridTextColumn Header="Инструмент" Width="70"/>
-                                        <DataGridTextColumn Header="% измен." Width="60"/>
-                                    </DataGrid.Columns>
-                                    <DataGrid.RowStyle>
-                                        <Style TargetType="DataGridRow">
-                                            <Setter Property="Background" Value="#1B5E20"/>
-                                        </Style>
-                                    </DataGrid.RowStyle>
-                                </DataGrid>
+                                <StackPanel>
+                                    <!-- PRFN -->
+                                    <Grid Margin="0,0,0,2" Background="#1B5E20">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="50"/>
+                                            <ColumnDefinition Width="70"/>
+                                            <ColumnDefinition Width="*"/>
+                                        </Grid.ColumnDefinitions>
+                                        <TextBlock Grid.Column="0" Text="PRFN" Foreground="#A5D6A7" FontSize="11" FontFamily="Consolas"/>
+                                        <TextBlock Grid.Column="1" Text="ПЕРМНЕФТЬ" Foreground="#A5D6A7" FontSize="11"/>
+                                        <TextBlock Grid.Column="2" Text="6,79" Foreground="#4CAF50" FontSize="11" HorizontalAlignment="Right" FontWeight="Bold"/>
+                                    </Grid>
+                                    <!-- TGBKP -->
+                                    <Grid Margin="0,0,0,2" Background="#1B5E20">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="50"/>
+                                            <ColumnDefinition Width="70"/>
+                                            <ColumnDefinition Width="*"/>
+                                        </Grid.ColumnDefinitions>
+                                        <TextBlock Grid.Column="0" Text="TGBKP" Foreground="#A5D6A7" FontSize="11" FontFamily="Consolas"/>
+                                        <TextBlock Grid.Column="1" Text="ТГК-2 ап" Foreground="#A5D6A7" FontSize="11"/>
+                                        <TextBlock Grid.Column="2" Text="2,87" Foreground="#4CAF50" FontSize="11" HorizontalAlignment="Right" FontWeight="Bold"/>
+                                    </Grid>
+                                    <!-- TGKN -->
+                                    <Grid Margin="0,0,0,2" Background="#1B5E20">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="50"/>
+                                            <ColumnDefinition Width="70"/>
+                                            <ColumnDefinition Width="*"/>
+                                        </Grid.ColumnDefinitions>
+                                        <TextBlock Grid.Column="0" Text="TGKN" Foreground="#A5D6A7" FontSize="11" FontFamily="Consolas"/>
+                                        <TextBlock Grid.Column="1" Text="ТГК-14" Foreground="#A5D6A7" FontSize="11"/>
+                                        <TextBlock Grid.Column="2" Text="2,60" Foreground="#4CAF50" FontSize="11" HorizontalAlignment="Right" FontWeight="Bold"/>
+                                    </Grid>
+                                    <!-- TGBK -->
+                                    <Grid Margin="0,0,0,2" Background="#1B5E20">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="50"/>
+                                            <ColumnDefinition Width="70"/>
+                                            <ColumnDefinition Width="*"/>
+                                        </Grid.ColumnDefinitions>
+                                        <TextBlock Grid.Column="0" Text="TGBK" Foreground="#A5D6A7" FontSize="11" FontFamily="Consolas"/>
+                                        <TextBlock Grid.Column="1" Text="ТГК-6" Foreground="#A5D6A7" FontSize="11"/>
+                                        <TextBlock Grid.Column="2" Text="1,69" Foreground="#4CAF50" FontSize="11" HorizontalAlignment="Right" FontWeight="Bold"/>
+                                    </Grid>
+                                    <!-- GTKR -->
+                                    <Grid Margin="0,0,0,2" Background="#1B5E20">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="50"/>
+                                            <ColumnDefinition Width="70"/>
+                                            <ColumnDefinition Width="*"/>
+                                        </Grid.ColumnDefinitions>
+                                        <TextBlock Grid.Column="0" Text="GTKR" Foreground="#A5D6A7" FontSize="11" FontFamily="Consolas"/>
+                                        <TextBlock Grid.Column="1" Text="ГТМ ао" Foreground="#A5D6A7" FontSize="11"/>
+                                        <TextBlock Grid.Column="2" Text="1,67" Foreground="#4CAF50" FontSize="11" HorizontalAlignment="Right" FontWeight="Bold"/>
+                                    </Grid>
+                                    <!-- VTBR -->
+                                    <Grid Margin="0,0,0,2" Background="#1B5E20">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="50"/>
+                                            <ColumnDefinition Width="70"/>
+                                            <ColumnDefinition Width="*"/>
+                                        </Grid.ColumnDefinitions>
+                                        <TextBlock Grid.Column="0" Text="VTBR" Foreground="#A5D6A7" FontSize="11" FontFamily="Consolas"/>
+                                        <TextBlock Grid.Column="1" Text="ВТБ ао" Foreground="#A5D6A7" FontSize="11"/>
+                                        <TextBlock Grid.Column="2" Text="1,59" Foreground="#4CAF50" FontSize="11" HorizontalAlignment="Right" FontWeight="Bold"/>
+                                    </Grid>
+                                    <!-- SVAV -->
+                                    <Grid Margin="0,0,0,2" Background="#1B5E20">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="50"/>
+                                            <ColumnDefinition Width="70"/>
+                                            <ColumnDefinition Width="*"/>
+                                        </Grid.ColumnDefinitions>
+                                        <TextBlock Grid.Column="0" Text="SVAV" Foreground="#A5D6A7" FontSize="11" FontFamily="Consolas"/>
+                                        <TextBlock Grid.Column="1" Text="СОЛЛЕРС" Foreground="#A5D6A7" FontSize="11"/>
+                                        <TextBlock Grid.Column="2" Text="1,43" Foreground="#4CAF50" FontSize="11" HorizontalAlignment="Right" FontWeight="Bold"/>
+                                    </Grid>
+                                    <!-- MRKU -->
+                                    <Grid Margin="0,0,0,2" Background="#1B5E20">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="50"/>
+                                            <ColumnDefinition Width="70"/>
+                                            <ColumnDefinition Width="*"/>
+                                        </Grid.ColumnDefinitions>
+                                        <TextBlock Grid.Column="0" Text="MRKU" Foreground="#A5D6A7" FontSize="11" FontFamily="Consolas"/>
+                                        <TextBlock Grid.Column="1" Text="Россети Ур" Foreground="#A5D6A7" FontSize="11"/>
+                                        <TextBlock Grid.Column="2" Text="1,28" Foreground="#4CAF50" FontSize="11" HorizontalAlignment="Right" FontWeight="Bold"/>
+                                    </Grid>
+                                    <!-- UNAC -->
+                                    <Grid Margin="0,0,0,2" Background="#1B5E20">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="50"/>
+                                            <ColumnDefinition Width="70"/>
+                                            <ColumnDefinition Width="*"/>
+                                        </Grid.ColumnDefinitions>
+                                        <TextBlock Grid.Column="0" Text="UNAC" Foreground="#A5D6A7" FontSize="11" FontFamily="Consolas"/>
+                                        <TextBlock Grid.Column="1" Text="iАвиаКаз" Foreground="#A5D6A7" FontSize="11"/>
+                                        <TextBlock Grid.Column="2" Text="1,22" Foreground="#4CAF50" FontSize="11" HorizontalAlignment="Right" FontWeight="Bold"/>
+                                    </Grid>
+                                    <!-- BLNG -->
+                                    <Grid Margin="0,0,0,2" Background="#1B5E20">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="50"/>
+                                            <ColumnDefinition Width="70"/>
+                                            <ColumnDefinition Width="*"/>
+                                        </Grid.ColumnDefinitions>
+                                        <TextBlock Grid.Column="0" Text="BLNG" Foreground="#A5D6A7" FontSize="11" FontFamily="Consolas"/>
+                                        <TextBlock Grid.Column="1" Text="Белон ао" Foreground="#A5D6A7" FontSize="11"/>
+                                        <TextBlock Grid.Column="2" Text="1,08" Foreground="#4CAF50" FontSize="11" HorizontalAlignment="Right" FontWeight="Bold"/>
+                                    </Grid>
+                                    <!-- PRFN -->
+                                    <Grid Margin="0,0,0,2" Background="#1B5E20">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="50"/>
+                                            <ColumnDefinition Width="70"/>
+                                            <ColumnDefinition Width="*"/>
+                                        </Grid.ColumnDefinitions>
+                                        <TextBlock Grid.Column="0" Text="PRFN" Foreground="#A5D6A7" FontSize="11" FontFamily="Consolas"/>
+                                        <TextBlock Grid.Column="1" Text="ПЕРМНЕФТЬ" Foreground="#A5D6A7" FontSize="11"/>
+                                        <TextBlock Grid.Column="2" Text="6,79" Foreground="#4CAF50" FontSize="11" HorizontalAlignment="Right" FontWeight="Bold"/>
+                                    </Grid>
+                                    <!-- TGBKP -->
+                                    <Grid Margin="0,0,0,2" Background="#1B5E20">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="50"/>
+                                            <ColumnDefinition Width="70"/>
+                                            <ColumnDefinition Width="*"/>
+                                        </Grid.ColumnDefinitions>
+                                        <TextBlock Grid.Column="0" Text="TGBKP" Foreground="#A5D6A7" FontSize="11" FontFamily="Consolas"/>
+                                        <TextBlock Grid.Column="1" Text="ТГК-2 ап" Foreground="#A5D6A7" FontSize="11"/>
+                                        <TextBlock Grid.Column="2" Text="2,87" Foreground="#4CAF50" FontSize="11" HorizontalAlignment="Right" FontWeight="Bold"/>
+                                    </Grid>
+                                    <!-- TGKN -->
+                                    <Grid Margin="0,0,0,2" Background="#1B5E20">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="50"/>
+                                            <ColumnDefinition Width="70"/>
+                                            <ColumnDefinition Width="*"/>
+                                        </Grid.ColumnDefinitions>
+                                        <TextBlock Grid.Column="0" Text="TGKN" Foreground="#A5D6A7" FontSize="11" FontFamily="Consolas"/>
+                                        <TextBlock Grid.Column="1" Text="ТГК-14" Foreground="#A5D6A7" FontSize="11"/>
+                                        <TextBlock Grid.Column="2" Text="2,60" Foreground="#4CAF50" FontSize="11" HorizontalAlignment="Right" FontWeight="Bold"/>
+                                    </Grid>
+                                    <!-- TGBK -->
+                                    <Grid Margin="0,0,0,2" Background="#1B5E20">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="50"/>
+                                            <ColumnDefinition Width="70"/>
+                                            <ColumnDefinition Width="*"/>
+                                        </Grid.ColumnDefinitions>
+                                        <TextBlock Grid.Column="0" Text="TGBK" Foreground="#A5D6A7" FontSize="11" FontFamily="Consolas"/>
+                                        <TextBlock Grid.Column="1" Text="ТГК-6" Foreground="#A5D6A7" FontSize="11"/>
+                                        <TextBlock Grid.Column="2" Text="1,69" Foreground="#4CAF50" FontSize="11" HorizontalAlignment="Right" FontWeight="Bold"/>
+                                    </Grid>
+                                    <!-- GTKR -->
+                                    <Grid Margin="0,0,0,2" Background="#1B5E20">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="50"/>
+                                            <ColumnDefinition Width="70"/>
+                                            <ColumnDefinition Width="*"/>
+                                        </Grid.ColumnDefinitions>
+                                        <TextBlock Grid.Column="0" Text="GTKR" Foreground="#A5D6A7" FontSize="11" FontFamily="Consolas"/>
+                                        <TextBlock Grid.Column="1" Text="ГТМ ао" Foreground="#A5D6A7" FontSize="11"/>
+                                        <TextBlock Grid.Column="2" Text="1,67" Foreground="#4CAF50" FontSize="11" HorizontalAlignment="Right" FontWeight="Bold"/>
+                                    </Grid>
+                                    <!-- VTBR -->
+                                    <Grid Margin="0,0,0,2" Background="#1B5E20">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="50"/>
+                                            <ColumnDefinition Width="70"/>
+                                            <ColumnDefinition Width="*"/>
+                                        </Grid.ColumnDefinitions>
+                                        <TextBlock Grid.Column="0" Text="VTBR" Foreground="#A5D6A7" FontSize="11" FontFamily="Consolas"/>
+                                        <TextBlock Grid.Column="1" Text="ВТБ ао" Foreground="#A5D6A7" FontSize="11"/>
+                                        <TextBlock Grid.Column="2" Text="1,59" Foreground="#4CAF50" FontSize="11" HorizontalAlignment="Right" FontWeight="Bold"/>
+                                    </Grid>
+                                    <!-- SVAV -->
+                                    <Grid Margin="0,0,0,2" Background="#1B5E20">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="50"/>
+                                            <ColumnDefinition Width="70"/>
+                                            <ColumnDefinition Width="*"/>
+                                        </Grid.ColumnDefinitions>
+                                        <TextBlock Grid.Column="0" Text="SVAV" Foreground="#A5D6A7" FontSize="11" FontFamily="Consolas"/>
+                                        <TextBlock Grid.Column="1" Text="СОЛЛЕРС" Foreground="#A5D6A7" FontSize="11"/>
+                                        <TextBlock Grid.Column="2" Text="1,43" Foreground="#4CAF50" FontSize="11" HorizontalAlignment="Right" FontWeight="Bold"/>
+                                    </Grid>
+                                    <!-- MRKU -->
+                                    <Grid Margin="0,0,0,2" Background="#1B5E20">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="50"/>
+                                            <ColumnDefinition Width="70"/>
+                                            <ColumnDefinition Width="*"/>
+                                        </Grid.ColumnDefinitions>
+                                        <TextBlock Grid.Column="0" Text="MRKU" Foreground="#A5D6A7" FontSize="11" FontFamily="Consolas"/>
+                                        <TextBlock Grid.Column="1" Text="Россети Ур" Foreground="#A5D6A7" FontSize="11"/>
+                                        <TextBlock Grid.Column="2" Text="1,28" Foreground="#4CAF50" FontSize="11" HorizontalAlignment="Right" FontWeight="Bold"/>
+                                    </Grid>
+                                    <!-- UNAC -->
+                                    <Grid Margin="0,0,0,2" Background="#1B5E20">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="50"/>
+                                            <ColumnDefinition Width="70"/>
+                                            <ColumnDefinition Width="*"/>
+                                        </Grid.ColumnDefinitions>
+                                        <TextBlock Grid.Column="0" Text="UNAC" Foreground="#A5D6A7" FontSize="11" FontFamily="Consolas"/>
+                                        <TextBlock Grid.Column="1" Text="iАвиаКаз" Foreground="#A5D6A7" FontSize="11"/>
+                                        <TextBlock Grid.Column="2" Text="1,22" Foreground="#4CAF50" FontSize="11" HorizontalAlignment="Right" FontWeight="Bold"/>
+                                    </Grid>
+                                    <!-- BLNG -->
+                                    <Grid Margin="0,0,0,2" Background="#1B5E20">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="50"/>
+                                            <ColumnDefinition Width="70"/>
+                                            <ColumnDefinition Width="*"/>
+                                        </Grid.ColumnDefinitions>
+                                        <TextBlock Grid.Column="0" Text="BLNG" Foreground="#A5D6A7" FontSize="11" FontFamily="Consolas"/>
+                                        <TextBlock Grid.Column="1" Text="Белон ао" Foreground="#A5D6A7" FontSize="11"/>
+                                        <TextBlock Grid.Column="2" Text="1,08" Foreground="#4CAF50" FontSize="11" HorizontalAlignment="Right" FontWeight="Bold"/>
+                                    </Grid>
+                                    <!-- PRFN -->
+                                    <Grid Margin="0,0,0,2" Background="#1B5E20">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="50"/>
+                                            <ColumnDefinition Width="70"/>
+                                            <ColumnDefinition Width="*"/>
+                                        </Grid.ColumnDefinitions>
+                                        <TextBlock Grid.Column="0" Text="PRFN" Foreground="#A5D6A7" FontSize="11" FontFamily="Consolas"/>
+                                        <TextBlock Grid.Column="1" Text="ПЕРМНЕФТЬ" Foreground="#A5D6A7" FontSize="11"/>
+                                        <TextBlock Grid.Column="2" Text="6,79" Foreground="#4CAF50" FontSize="11" HorizontalAlignment="Right" FontWeight="Bold"/>
+                                    </Grid>
+                                    <!-- TGBKP -->
+                                    <Grid Margin="0,0,0,2" Background="#1B5E20">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="50"/>
+                                            <ColumnDefinition Width="70"/>
+                                            <ColumnDefinition Width="*"/>
+                                        </Grid.ColumnDefinitions>
+                                        <TextBlock Grid.Column="0" Text="TGBKP" Foreground="#A5D6A7" FontSize="11" FontFamily="Consolas"/>
+                                        <TextBlock Grid.Column="1" Text="ТГК-2 ап" Foreground="#A5D6A7" FontSize="11"/>
+                                        <TextBlock Grid.Column="2" Text="2,87" Foreground="#4CAF50" FontSize="11" HorizontalAlignment="Right" FontWeight="Bold"/>
+                                    </Grid>
+                                    <!-- TGKN -->
+                                    <Grid Margin="0,0,0,2" Background="#1B5E20">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="50"/>
+                                            <ColumnDefinition Width="70"/>
+                                            <ColumnDefinition Width="*"/>
+                                        </Grid.ColumnDefinitions>
+                                        <TextBlock Grid.Column="0" Text="TGKN" Foreground="#A5D6A7" FontSize="11" FontFamily="Consolas"/>
+                                        <TextBlock Grid.Column="1" Text="ТГК-14" Foreground="#A5D6A7" FontSize="11"/>
+                                        <TextBlock Grid.Column="2" Text="2,60" Foreground="#4CAF50" FontSize="11" HorizontalAlignment="Right" FontWeight="Bold"/>
+                                    </Grid>
+                                    <!-- TGBK -->
+                                    <Grid Margin="0,0,0,2" Background="#1B5E20">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="50"/>
+                                            <ColumnDefinition Width="70"/>
+                                            <ColumnDefinition Width="*"/>
+                                        </Grid.ColumnDefinitions>
+                                        <TextBlock Grid.Column="0" Text="TGBK" Foreground="#A5D6A7" FontSize="11" FontFamily="Consolas"/>
+                                        <TextBlock Grid.Column="1" Text="ТГК-6" Foreground="#A5D6A7" FontSize="11"/>
+                                        <TextBlock Grid.Column="2" Text="1,69" Foreground="#4CAF50" FontSize="11" HorizontalAlignment="Right" FontWeight="Bold"/>
+                                    </Grid>
+                                    <!-- GTKR -->
+                                    <Grid Margin="0,0,0,2" Background="#1B5E20">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="50"/>
+                                            <ColumnDefinition Width="70"/>
+                                            <ColumnDefinition Width="*"/>
+                                        </Grid.ColumnDefinitions>
+                                        <TextBlock Grid.Column="0" Text="GTKR" Foreground="#A5D6A7" FontSize="11" FontFamily="Consolas"/>
+                                        <TextBlock Grid.Column="1" Text="ГТМ ао" Foreground="#A5D6A7" FontSize="11"/>
+                                        <TextBlock Grid.Column="2" Text="1,67" Foreground="#4CAF50" FontSize="11" HorizontalAlignment="Right" FontWeight="Bold"/>
+                                    </Grid>
+                                    <!-- VTBR -->
+                                    <Grid Margin="0,0,0,2" Background="#1B5E20">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="50"/>
+                                            <ColumnDefinition Width="70"/>
+                                            <ColumnDefinition Width="*"/>
+                                        </Grid.ColumnDefinitions>
+                                        <TextBlock Grid.Column="0" Text="VTBR" Foreground="#A5D6A7" FontSize="11" FontFamily="Consolas"/>
+                                        <TextBlock Grid.Column="1" Text="ВТБ ао" Foreground="#A5D6A7" FontSize="11"/>
+                                        <TextBlock Grid.Column="2" Text="1,59" Foreground="#4CAF50" FontSize="11" HorizontalAlignment="Right" FontWeight="Bold"/>
+                                    </Grid>
+                                    <!-- SVAV -->
+                                    <Grid Margin="0,0,0,2" Background="#1B5E20">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="50"/>
+                                            <ColumnDefinition Width="70"/>
+                                            <ColumnDefinition Width="*"/>
+                                        </Grid.ColumnDefinitions>
+                                        <TextBlock Grid.Column="0" Text="SVAV" Foreground="#A5D6A7" FontSize="11" FontFamily="Consolas"/>
+                                        <TextBlock Grid.Column="1" Text="СОЛЛЕРС" Foreground="#A5D6A7" FontSize="11"/>
+                                        <TextBlock Grid.Column="2" Text="1,43" Foreground="#4CAF50" FontSize="11" HorizontalAlignment="Right" FontWeight="Bold"/>
+                                    </Grid>
+                                    <!-- MRKU -->
+                                    <Grid Margin="0,0,0,2" Background="#1B5E20">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="50"/>
+                                            <ColumnDefinition Width="70"/>
+                                            <ColumnDefinition Width="*"/>
+                                        </Grid.ColumnDefinitions>
+                                        <TextBlock Grid.Column="0" Text="MRKU" Foreground="#A5D6A7" FontSize="11" FontFamily="Consolas"/>
+                                        <TextBlock Grid.Column="1" Text="Россети Ур" Foreground="#A5D6A7" FontSize="11"/>
+                                        <TextBlock Grid.Column="2" Text="1,28" Foreground="#4CAF50" FontSize="11" HorizontalAlignment="Right" FontWeight="Bold"/>
+                                    </Grid>
+                                    <!-- UNAC -->
+                                    <Grid Margin="0,0,0,2" Background="#1B5E20">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="50"/>
+                                            <ColumnDefinition Width="70"/>
+                                            <ColumnDefinition Width="*"/>
+                                        </Grid.ColumnDefinitions>
+                                        <TextBlock Grid.Column="0" Text="UNAC" Foreground="#A5D6A7" FontSize="11" FontFamily="Consolas"/>
+                                        <TextBlock Grid.Column="1" Text="iАвиаКаз" Foreground="#A5D6A7" FontSize="11"/>
+                                        <TextBlock Grid.Column="2" Text="1,22" Foreground="#4CAF50" FontSize="11" HorizontalAlignment="Right" FontWeight="Bold"/>
+                                    </Grid>
+                                    <!-- BLNG -->
+                                    <Grid Margin="0,0,0,2" Background="#1B5E20">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="50"/>
+                                            <ColumnDefinition Width="70"/>
+                                            <ColumnDefinition Width="*"/>
+                                        </Grid.ColumnDefinitions>
+                                        <TextBlock Grid.Column="0" Text="BLNG" Foreground="#A5D6A7" FontSize="11" FontFamily="Consolas"/>
+                                        <TextBlock Grid.Column="1" Text="Белон ао" Foreground="#A5D6A7" FontSize="11"/>
+                                        <TextBlock Grid.Column="2" Text="1,08" Foreground="#4CAF50" FontSize="11" HorizontalAlignment="Right" FontWeight="Bold"/>
+                                    </Grid>
+                                </StackPanel>
                             </ScrollViewer>
                         </Grid>
                     </Border>
@@ -252,7 +867,7 @@
                     <Border Grid.Column="3" Background="#404040" Margin="0,5"/>
 
                     <!-- ═══════════════════════════════════════════════════ -->
-                    <!--  ТАБЛИЦА 3: ЛИДЕРЫ ПАДЕНИЯ                          -->
+                    <!--  ТАБЛИЦА 3: ЛИДЕРЫ ПАДЕНИЯ (все красные)            -->
                     <!-- ═══════════════════════════════════════════════════ -->
                     <Border Grid.Column="4" Background="#1E1E1E" CornerRadius="4">
                         <Grid>
@@ -262,44 +877,355 @@
                             </Grid.RowDefinitions>
 
                             <TextBlock Grid.Row="0" Text="📉 Лидеры падения" 
-                               FontSize="12" FontWeight="Bold" 
-                               Foreground="White"
-                               Margin="10,8,10,5"/>
+                                       FontSize="12" FontWeight="Bold" 
+                                       Foreground="White"
+                                       Margin="10,8,10,5"/>
+
+                            <!-- Заголовки столбцов -->
+                            <Grid Grid.Row="0" Margin="10,35,10,5">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="50"/>
+                                    <ColumnDefinition Width="70"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <TextBlock Grid.Column="0" Text="Код" Foreground="#90CAF9" FontSize="10" FontWeight="Bold"/>
+                                <TextBlock Grid.Column="1" Text="Инструмент" Foreground="#90CAF9" FontSize="10" FontWeight="Bold"/>
+                                <TextBlock Grid.Column="2" Text="% измен." Foreground="#90CAF9" FontSize="10" FontWeight="Bold" HorizontalAlignment="Right"/>
+                            </Grid>
 
                             <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Hidden" Margin="10,0,10,8">
-                                <DataGrid AutoGenerateColumns="False"
-                                  HeadersVisibility="Column"
-                                  Background="#1E1E1E"
-                                  RowBackground="#1E1E1E"
-                                  AlternatingRowBackground="#252525"
-                                  Foreground="White"
-                                  BorderThickness="0"
-                                  GridLinesVisibility="Horizontal"
-                                  HorizontalGridLinesBrush="#404040"
-                                  FontSize="11"
-                                  FontFamily="Consolas"
-                                  CanUserAddRows="False"
-                                  IsReadOnly="True">
-                                    <DataGrid.ColumnHeaderStyle>
-                                        <Style TargetType="DataGridColumnHeader">
-                                            <Setter Property="Background" Value="#2A2A2A"/>
-                                            <Setter Property="Foreground" Value="#90CAF9"/>
-                                            <Setter Property="Padding" Value="5,4"/>
-                                            <Setter Property="FontWeight" Value="Bold"/>
-                                            <Setter Property="FontSize" Value="10"/>
-                                        </Style>
-                                    </DataGrid.ColumnHeaderStyle>
-                                    <DataGrid.Columns>
-                                        <DataGridTextColumn Header="Код" Width="50"/>
-                                        <DataGridTextColumn Header="Инструмент" Width="70"/>
-                                        <DataGridTextColumn Header="% измен." Width="60"/>
-                                    </DataGrid.Columns>
-                                    <DataGrid.RowStyle>
-                                        <Style TargetType="DataGridRow">
-                                            <Setter Property="Background" Value="#B71C1C"/>
-                                        </Style>
-                                    </DataGrid.RowStyle>
-                                </DataGrid>
+                                <StackPanel>
+                                    <!-- NKNC -->
+                                    <Grid Margin="0,0,0,2" Background="#B71C1C">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="50"/>
+                                            <ColumnDefinition Width="70"/>
+                                            <ColumnDefinition Width="*"/>
+                                        </Grid.ColumnDefinitions>
+                                        <TextBlock Grid.Column="0" Text="NKNC" Foreground="#FFCDD2" FontSize="11" FontFamily="Consolas"/>
+                                        <TextBlock Grid.Column="1" Text="НКНХ ап" Foreground="#FFCDD2" FontSize="11"/>
+                                        <TextBlock Grid.Column="2" Text="-3,88" Foreground="#F44336" FontSize="11" HorizontalAlignment="Right" FontWeight="Bold"/>
+                                    </Grid>
+                                    <!-- RNFT -->
+                                    <Grid Margin="0,0,0,2" Background="#B71C1C">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="50"/>
+                                            <ColumnDefinition Width="70"/>
+                                            <ColumnDefinition Width="*"/>
+                                        </Grid.ColumnDefinitions>
+                                        <TextBlock Grid.Column="0" Text="RNFT" Foreground="#FFCDD2" FontSize="11" FontFamily="Consolas"/>
+                                        <TextBlock Grid.Column="1" Text="РуссНефт ап" Foreground="#FFCDD2" FontSize="11"/>
+                                        <TextBlock Grid.Column="2" Text="-2,58" Foreground="#F44336" FontSize="11" HorizontalAlignment="Right" FontWeight="Bold"/>
+                                    </Grid>
+                                    <!-- APTK -->
+                                    <Grid Margin="0,0,0,2" Background="#B71C1C">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="50"/>
+                                            <ColumnDefinition Width="70"/>
+                                            <ColumnDefinition Width="*"/>
+                                        </Grid.ColumnDefinitions>
+                                        <TextBlock Grid.Column="0" Text="APTK" Foreground="#FFCDD2" FontSize="11" FontFamily="Consolas"/>
+                                        <TextBlock Grid.Column="1" Text="Аптеки36и6" Foreground="#FFCDD2" FontSize="11"/>
+                                        <TextBlock Grid.Column="2" Text="-2,44" Foreground="#F44336" FontSize="11" HorizontalAlignment="Right" FontWeight="Bold"/>
+                                    </Grid>
+                                    <!-- ROSN -->
+                                    <Grid Margin="0,0,0,2" Background="#B71C1C">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="50"/>
+                                            <ColumnDefinition Width="70"/>
+                                            <ColumnDefinition Width="*"/>
+                                        </Grid.ColumnDefinitions>
+                                        <TextBlock Grid.Column="0" Text="ROSN" Foreground="#FFCDD2" FontSize="11" FontFamily="Consolas"/>
+                                        <TextBlock Grid.Column="1" Text="Роснефть" Foreground="#FFCDD2" FontSize="11"/>
+                                        <TextBlock Grid.Column="2" Text="-2,44" Foreground="#F44336" FontSize="11" HorizontalAlignment="Right" FontWeight="Bold"/>
+                                    </Grid>
+                                    <!-- TRMK -->
+                                    <Grid Margin="0,0,0,2" Background="#B71C1C">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="50"/>
+                                            <ColumnDefinition Width="70"/>
+                                            <ColumnDefinition Width="*"/>
+                                        </Grid.ColumnDefinitions>
+                                        <TextBlock Grid.Column="0" Text="TRMK" Foreground="#FFCDD2" FontSize="11" FontFamily="Consolas"/>
+                                        <TextBlock Grid.Column="1" Text="ТМК ао" Foreground="#FFCDD2" FontSize="11"/>
+                                        <TextBlock Grid.Column="2" Text="-2,37" Foreground="#F44336" FontSize="11" HorizontalAlignment="Right" FontWeight="Bold"/>
+                                    </Grid>
+                                    <!-- VSMO -->
+                                    <Grid Margin="0,0,0,2" Background="#B71C1C">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="50"/>
+                                            <ColumnDefinition Width="70"/>
+                                            <ColumnDefinition Width="*"/>
+                                        </Grid.ColumnDefinitions>
+                                        <TextBlock Grid.Column="0" Text="VSMO" Foreground="#FFCDD2" FontSize="11" FontFamily="Consolas"/>
+                                        <TextBlock Grid.Column="1" Text="ГК РБК ао" Foreground="#FFCDD2" FontSize="11"/>
+                                        <TextBlock Grid.Column="2" Text="-2,21" Foreground="#F44336" FontSize="11" HorizontalAlignment="Right" FontWeight="Bold"/>
+                                    </Grid>
+                                    <!-- GAZP -->
+                                    <Grid Margin="0,0,0,2" Background="#B71C1C">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="50"/>
+                                            <ColumnDefinition Width="70"/>
+                                            <ColumnDefinition Width="*"/>
+                                        </Grid.ColumnDefinitions>
+                                        <TextBlock Grid.Column="0" Text="GAZP" Foreground="#FFCDD2" FontSize="11" FontFamily="Consolas"/>
+                                        <TextBlock Grid.Column="1" Text="ГАЗПРОМ ао" Foreground="#FFCDD2" FontSize="11"/>
+                                        <TextBlock Grid.Column="2" Text="-2,12" Foreground="#F44336" FontSize="11" HorizontalAlignment="Right" FontWeight="Bold"/>
+                                    </Grid>
+                                    <!-- TRNFP -->
+                                    <Grid Margin="0,0,0,2" Background="#B71C1C">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="50"/>
+                                            <ColumnDefinition Width="70"/>
+                                            <ColumnDefinition Width="*"/>
+                                        </Grid.ColumnDefinitions>
+                                        <TextBlock Grid.Column="0" Text="TRNFP" Foreground="#FFCDD2" FontSize="11" FontFamily="Consolas"/>
+                                        <TextBlock Grid.Column="1" Text="Транснф ап" Foreground="#FFCDD2" FontSize="11"/>
+                                        <TextBlock Grid.Column="2" Text="-2,06" Foreground="#F44336" FontSize="11" HorizontalAlignment="Right" FontWeight="Bold"/>
+                                    </Grid>
+                                    <!-- NVTK -->
+                                    <Grid Margin="0,0,0,2" Background="#B71C1C">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="50"/>
+                                            <ColumnDefinition Width="70"/>
+                                            <ColumnDefinition Width="*"/>
+                                        </Grid.ColumnDefinitions>
+                                        <TextBlock Grid.Column="0" Text="NVTK" Foreground="#FFCDD2" FontSize="11" FontFamily="Consolas"/>
+                                        <TextBlock Grid.Column="1" Text="Новатэк ао" Foreground="#FFCDD2" FontSize="11"/>
+                                        <TextBlock Grid.Column="2" Text="-2,01" Foreground="#F44336" FontSize="11" HorizontalAlignment="Right" FontWeight="Bold"/>
+                                    </Grid>
+                                    <!-- TATN -->
+                                    <Grid Margin="0,0,0,2" Background="#B71C1C">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="50"/>
+                                            <ColumnDefinition Width="70"/>
+                                            <ColumnDefinition Width="*"/>
+                                        </Grid.ColumnDefinitions>
+                                        <TextBlock Grid.Column="0" Text="TATN" Foreground="#FFCDD2" FontSize="11" FontFamily="Consolas"/>
+                                        <TextBlock Grid.Column="1" Text="Татнефт ао" Foreground="#FFCDD2" FontSize="11"/>
+                                        <TextBlock Grid.Column="2" Text="-1,98" Foreground="#F44336" FontSize="11" HorizontalAlignment="Right" FontWeight="Bold"/>
+                                    </Grid>
+                                    <!-- NKNC -->
+                                    <Grid Margin="0,0,0,2" Background="#B71C1C">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="50"/>
+                                            <ColumnDefinition Width="70"/>
+                                            <ColumnDefinition Width="*"/>
+                                        </Grid.ColumnDefinitions>
+                                        <TextBlock Grid.Column="0" Text="NKNC" Foreground="#FFCDD2" FontSize="11" FontFamily="Consolas"/>
+                                        <TextBlock Grid.Column="1" Text="НКНХ ап" Foreground="#FFCDD2" FontSize="11"/>
+                                        <TextBlock Grid.Column="2" Text="-3,88" Foreground="#F44336" FontSize="11" HorizontalAlignment="Right" FontWeight="Bold"/>
+                                    </Grid>
+                                    <!-- RNFT -->
+                                    <Grid Margin="0,0,0,2" Background="#B71C1C">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="50"/>
+                                            <ColumnDefinition Width="70"/>
+                                            <ColumnDefinition Width="*"/>
+                                        </Grid.ColumnDefinitions>
+                                        <TextBlock Grid.Column="0" Text="RNFT" Foreground="#FFCDD2" FontSize="11" FontFamily="Consolas"/>
+                                        <TextBlock Grid.Column="1" Text="РуссНефт ап" Foreground="#FFCDD2" FontSize="11"/>
+                                        <TextBlock Grid.Column="2" Text="-2,58" Foreground="#F44336" FontSize="11" HorizontalAlignment="Right" FontWeight="Bold"/>
+                                    </Grid>
+                                    <!-- APTK -->
+                                    <Grid Margin="0,0,0,2" Background="#B71C1C">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="50"/>
+                                            <ColumnDefinition Width="70"/>
+                                            <ColumnDefinition Width="*"/>
+                                        </Grid.ColumnDefinitions>
+                                        <TextBlock Grid.Column="0" Text="APTK" Foreground="#FFCDD2" FontSize="11" FontFamily="Consolas"/>
+                                        <TextBlock Grid.Column="1" Text="Аптеки36и6" Foreground="#FFCDD2" FontSize="11"/>
+                                        <TextBlock Grid.Column="2" Text="-2,44" Foreground="#F44336" FontSize="11" HorizontalAlignment="Right" FontWeight="Bold"/>
+                                    </Grid>
+                                    <!-- ROSN -->
+                                    <Grid Margin="0,0,0,2" Background="#B71C1C">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="50"/>
+                                            <ColumnDefinition Width="70"/>
+                                            <ColumnDefinition Width="*"/>
+                                        </Grid.ColumnDefinitions>
+                                        <TextBlock Grid.Column="0" Text="ROSN" Foreground="#FFCDD2" FontSize="11" FontFamily="Consolas"/>
+                                        <TextBlock Grid.Column="1" Text="Роснефть" Foreground="#FFCDD2" FontSize="11"/>
+                                        <TextBlock Grid.Column="2" Text="-2,44" Foreground="#F44336" FontSize="11" HorizontalAlignment="Right" FontWeight="Bold"/>
+                                    </Grid>
+                                    <!-- TRMK -->
+                                    <Grid Margin="0,0,0,2" Background="#B71C1C">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="50"/>
+                                            <ColumnDefinition Width="70"/>
+                                            <ColumnDefinition Width="*"/>
+                                        </Grid.ColumnDefinitions>
+                                        <TextBlock Grid.Column="0" Text="TRMK" Foreground="#FFCDD2" FontSize="11" FontFamily="Consolas"/>
+                                        <TextBlock Grid.Column="1" Text="ТМК ао" Foreground="#FFCDD2" FontSize="11"/>
+                                        <TextBlock Grid.Column="2" Text="-2,37" Foreground="#F44336" FontSize="11" HorizontalAlignment="Right" FontWeight="Bold"/>
+                                    </Grid>
+                                    <!-- VSMO -->
+                                    <Grid Margin="0,0,0,2" Background="#B71C1C">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="50"/>
+                                            <ColumnDefinition Width="70"/>
+                                            <ColumnDefinition Width="*"/>
+                                        </Grid.ColumnDefinitions>
+                                        <TextBlock Grid.Column="0" Text="VSMO" Foreground="#FFCDD2" FontSize="11" FontFamily="Consolas"/>
+                                        <TextBlock Grid.Column="1" Text="ГК РБК ао" Foreground="#FFCDD2" FontSize="11"/>
+                                        <TextBlock Grid.Column="2" Text="-2,21" Foreground="#F44336" FontSize="11" HorizontalAlignment="Right" FontWeight="Bold"/>
+                                    </Grid>
+                                    <!-- GAZP -->
+                                    <Grid Margin="0,0,0,2" Background="#B71C1C">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="50"/>
+                                            <ColumnDefinition Width="70"/>
+                                            <ColumnDefinition Width="*"/>
+                                        </Grid.ColumnDefinitions>
+                                        <TextBlock Grid.Column="0" Text="GAZP" Foreground="#FFCDD2" FontSize="11" FontFamily="Consolas"/>
+                                        <TextBlock Grid.Column="1" Text="ГАЗПРОМ ао" Foreground="#FFCDD2" FontSize="11"/>
+                                        <TextBlock Grid.Column="2" Text="-2,12" Foreground="#F44336" FontSize="11" HorizontalAlignment="Right" FontWeight="Bold"/>
+                                    </Grid>
+                                    <!-- TRNFP -->
+                                    <Grid Margin="0,0,0,2" Background="#B71C1C">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="50"/>
+                                            <ColumnDefinition Width="70"/>
+                                            <ColumnDefinition Width="*"/>
+                                        </Grid.ColumnDefinitions>
+                                        <TextBlock Grid.Column="0" Text="TRNFP" Foreground="#FFCDD2" FontSize="11" FontFamily="Consolas"/>
+                                        <TextBlock Grid.Column="1" Text="Транснф ап" Foreground="#FFCDD2" FontSize="11"/>
+                                        <TextBlock Grid.Column="2" Text="-2,06" Foreground="#F44336" FontSize="11" HorizontalAlignment="Right" FontWeight="Bold"/>
+                                    </Grid>
+                                    <!-- NVTK -->
+                                    <Grid Margin="0,0,0,2" Background="#B71C1C">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="50"/>
+                                            <ColumnDefinition Width="70"/>
+                                            <ColumnDefinition Width="*"/>
+                                        </Grid.ColumnDefinitions>
+                                        <TextBlock Grid.Column="0" Text="NVTK" Foreground="#FFCDD2" FontSize="11" FontFamily="Consolas"/>
+                                        <TextBlock Grid.Column="1" Text="Новатэк ао" Foreground="#FFCDD2" FontSize="11"/>
+                                        <TextBlock Grid.Column="2" Text="-2,01" Foreground="#F44336" FontSize="11" HorizontalAlignment="Right" FontWeight="Bold"/>
+                                    </Grid>
+                                    <!-- TATN -->
+                                    <Grid Margin="0,0,0,2" Background="#B71C1C">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="50"/>
+                                            <ColumnDefinition Width="70"/>
+                                            <ColumnDefinition Width="*"/>
+                                        </Grid.ColumnDefinitions>
+                                        <TextBlock Grid.Column="0" Text="TATN" Foreground="#FFCDD2" FontSize="11" FontFamily="Consolas"/>
+                                        <TextBlock Grid.Column="1" Text="Татнефт ао" Foreground="#FFCDD2" FontSize="11"/>
+                                        <TextBlock Grid.Column="2" Text="-1,98" Foreground="#F44336" FontSize="11" HorizontalAlignment="Right" FontWeight="Bold"/>
+                                    </Grid>
+                                    <!-- NKNC -->
+                                    <Grid Margin="0,0,0,2" Background="#B71C1C">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="50"/>
+                                            <ColumnDefinition Width="70"/>
+                                            <ColumnDefinition Width="*"/>
+                                        </Grid.ColumnDefinitions>
+                                        <TextBlock Grid.Column="0" Text="NKNC" Foreground="#FFCDD2" FontSize="11" FontFamily="Consolas"/>
+                                        <TextBlock Grid.Column="1" Text="НКНХ ап" Foreground="#FFCDD2" FontSize="11"/>
+                                        <TextBlock Grid.Column="2" Text="-3,88" Foreground="#F44336" FontSize="11" HorizontalAlignment="Right" FontWeight="Bold"/>
+                                    </Grid>
+                                    <!-- RNFT -->
+                                    <Grid Margin="0,0,0,2" Background="#B71C1C">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="50"/>
+                                            <ColumnDefinition Width="70"/>
+                                            <ColumnDefinition Width="*"/>
+                                        </Grid.ColumnDefinitions>
+                                        <TextBlock Grid.Column="0" Text="RNFT" Foreground="#FFCDD2" FontSize="11" FontFamily="Consolas"/>
+                                        <TextBlock Grid.Column="1" Text="РуссНефт ап" Foreground="#FFCDD2" FontSize="11"/>
+                                        <TextBlock Grid.Column="2" Text="-2,58" Foreground="#F44336" FontSize="11" HorizontalAlignment="Right" FontWeight="Bold"/>
+                                    </Grid>
+                                    <!-- APTK -->
+                                    <Grid Margin="0,0,0,2" Background="#B71C1C">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="50"/>
+                                            <ColumnDefinition Width="70"/>
+                                            <ColumnDefinition Width="*"/>
+                                        </Grid.ColumnDefinitions>
+                                        <TextBlock Grid.Column="0" Text="APTK" Foreground="#FFCDD2" FontSize="11" FontFamily="Consolas"/>
+                                        <TextBlock Grid.Column="1" Text="Аптеки36и6" Foreground="#FFCDD2" FontSize="11"/>
+                                        <TextBlock Grid.Column="2" Text="-2,44" Foreground="#F44336" FontSize="11" HorizontalAlignment="Right" FontWeight="Bold"/>
+                                    </Grid>
+                                    <!-- ROSN -->
+                                    <Grid Margin="0,0,0,2" Background="#B71C1C">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="50"/>
+                                            <ColumnDefinition Width="70"/>
+                                            <ColumnDefinition Width="*"/>
+                                        </Grid.ColumnDefinitions>
+                                        <TextBlock Grid.Column="0" Text="ROSN" Foreground="#FFCDD2" FontSize="11" FontFamily="Consolas"/>
+                                        <TextBlock Grid.Column="1" Text="Роснефть" Foreground="#FFCDD2" FontSize="11"/>
+                                        <TextBlock Grid.Column="2" Text="-2,44" Foreground="#F44336" FontSize="11" HorizontalAlignment="Right" FontWeight="Bold"/>
+                                    </Grid>
+                                    <!-- TRMK -->
+                                    <Grid Margin="0,0,0,2" Background="#B71C1C">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="50"/>
+                                            <ColumnDefinition Width="70"/>
+                                            <ColumnDefinition Width="*"/>
+                                        </Grid.ColumnDefinitions>
+                                        <TextBlock Grid.Column="0" Text="TRMK" Foreground="#FFCDD2" FontSize="11" FontFamily="Consolas"/>
+                                        <TextBlock Grid.Column="1" Text="ТМК ао" Foreground="#FFCDD2" FontSize="11"/>
+                                        <TextBlock Grid.Column="2" Text="-2,37" Foreground="#F44336" FontSize="11" HorizontalAlignment="Right" FontWeight="Bold"/>
+                                    </Grid>
+                                    <!-- VSMO -->
+                                    <Grid Margin="0,0,0,2" Background="#B71C1C">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="50"/>
+                                            <ColumnDefinition Width="70"/>
+                                            <ColumnDefinition Width="*"/>
+                                        </Grid.ColumnDefinitions>
+                                        <TextBlock Grid.Column="0" Text="VSMO" Foreground="#FFCDD2" FontSize="11" FontFamily="Consolas"/>
+                                        <TextBlock Grid.Column="1" Text="ГК РБК ао" Foreground="#FFCDD2" FontSize="11"/>
+                                        <TextBlock Grid.Column="2" Text="-2,21" Foreground="#F44336" FontSize="11" HorizontalAlignment="Right" FontWeight="Bold"/>
+                                    </Grid>
+                                    <!-- GAZP -->
+                                    <Grid Margin="0,0,0,2" Background="#B71C1C">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="50"/>
+                                            <ColumnDefinition Width="70"/>
+                                            <ColumnDefinition Width="*"/>
+                                        </Grid.ColumnDefinitions>
+                                        <TextBlock Grid.Column="0" Text="GAZP" Foreground="#FFCDD2" FontSize="11" FontFamily="Consolas"/>
+                                        <TextBlock Grid.Column="1" Text="ГАЗПРОМ ао" Foreground="#FFCDD2" FontSize="11"/>
+                                        <TextBlock Grid.Column="2" Text="-2,12" Foreground="#F44336" FontSize="11" HorizontalAlignment="Right" FontWeight="Bold"/>
+                                    </Grid>
+                                    <!-- TRNFP -->
+                                    <Grid Margin="0,0,0,2" Background="#B71C1C">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="50"/>
+                                            <ColumnDefinition Width="70"/>
+                                            <ColumnDefinition Width="*"/>
+                                        </Grid.ColumnDefinitions>
+                                        <TextBlock Grid.Column="0" Text="TRNFP" Foreground="#FFCDD2" FontSize="11" FontFamily="Consolas"/>
+                                        <TextBlock Grid.Column="1" Text="Транснф ап" Foreground="#FFCDD2" FontSize="11"/>
+                                        <TextBlock Grid.Column="2" Text="-2,06" Foreground="#F44336" FontSize="11" HorizontalAlignment="Right" FontWeight="Bold"/>
+                                    </Grid>
+                                    <!-- NVTK -->
+                                    <Grid Margin="0,0,0,2" Background="#B71C1C">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="50"/>
+                                            <ColumnDefinition Width="70"/>
+                                            <ColumnDefinition Width="*"/>
+                                        </Grid.ColumnDefinitions>
+                                        <TextBlock Grid.Column="0" Text="NVTK" Foreground="#FFCDD2" FontSize="11" FontFamily="Consolas"/>
+                                        <TextBlock Grid.Column="1" Text="Новатэк ао" Foreground="#FFCDD2" FontSize="11"/>
+                                        <TextBlock Grid.Column="2" Text="-2,01" Foreground="#F44336" FontSize="11" HorizontalAlignment="Right" FontWeight="Bold"/>
+                                    </Grid>
+                                    <!-- TATN -->
+                                    <Grid Margin="0,0,0,2" Background="#B71C1C">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="50"/>
+                                            <ColumnDefinition Width="70"/>
+                                            <ColumnDefinition Width="*"/>
+                                        </Grid.ColumnDefinitions>
+                                        <TextBlock Grid.Column="0" Text="TATN" Foreground="#FFCDD2" FontSize="11" FontFamily="Consolas"/>
+                                        <TextBlock Grid.Column="1" Text="Татнефт ао" Foreground="#FFCDD2" FontSize="11"/>
+                                        <TextBlock Grid.Column="2" Text="-1,98" Foreground="#F44336" FontSize="11" HorizontalAlignment="Right" FontWeight="Bold"/>
+                                    </Grid>
+                                </StackPanel>
                             </ScrollViewer>
                         </Grid>
                     </Border>
