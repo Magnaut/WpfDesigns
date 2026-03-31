@@ -1,0 +1,98 @@
+﻿<!-- ============================================================ -->
+<!-- ФАЙЛ: MainWindow.xaml                                        -->
+<!-- ПРОЕКТ: Tradentum.UI                                         -->
+<!-- ОПИСАНИЕ: Главное окно приложения с навигацией               -->
+<!-- ============================================================ -->
+
+<Window x:Class="DesignPrototype.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:DesignPrototype"
+        mc:Ignorable="d"
+        Title="Tradentum - Торговый Терминал" 
+        Height="800" Width="1400"
+        WindowState="Maximized"
+        WindowStartupLocation="CenterScreen">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="35"/>
+        </Grid.RowDefinitions>
+
+        <!-- ВЕРХНЯЯ ПАНЕЛЬ -->
+        <Border Grid.Row="0" Background="#1E1E1E" BorderBrush="#333333" BorderThickness="0,0,0,1">
+            <Grid Margin="15,0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+
+                <!-- Логотип -->
+                <StackPanel Grid.Column="0" Orientation="Horizontal" VerticalAlignment="Center">
+                    <TextBlock Text="🚀" FontSize="20" VerticalAlignment="Center" Margin="0,0,10,0"/>
+                    <TextBlock Text="Tradentum" FontSize="18" FontWeight="Bold" 
+                               Foreground="White" VerticalAlignment="Center"/>
+                </StackPanel>
+
+                <!-- Навигация -->
+                <StackPanel Grid.Column="1" Orientation="Horizontal" 
+                            HorizontalAlignment="Center" VerticalAlignment="Center">
+                    <Button Content="🏠 Главная" Click="NavButton_Click" Tag="Home"
+                            Padding="15,8" Margin="5,0"
+                            Foreground="White" Background="Transparent" BorderThickness="0"
+                            Cursor="Hand"/>
+                </StackPanel>
+
+                <!-- КНОПКА ПОДКЛЮЧЕНИЯ + ИНДИКАТОР -->
+                <StackPanel Grid.Column="2" Orientation="Horizontal" VerticalAlignment="Center">
+                    <Button x:Name="ConnectButton" Content="▶ Подключить"
+                            Padding="15,8" Margin="5,0"
+                            Foreground="White" Background="#BB86FC" BorderThickness="0"
+                            MinWidth="120" Cursor="Hand"/>
+                    <Ellipse x:Name="StatusIndicator" Width="10" Height="10" Margin="10,0,0,0" Fill="#666666"/>
+                    <TextBlock x:Name="StatusText" Text="Отключено" 
+                               Foreground="#B0B0B0" VerticalAlignment="Center" Margin="8,0,0,0"/>
+                </StackPanel>
+            </Grid>
+        </Border>
+
+        <!-- КОНТЕНТ (FRAME) -->
+        <Border Grid.Row="1" Background="#121212">
+            <Frame x:Name="MainFrame" 
+                   NavigationUIVisibility="Hidden" 
+                   Background="Transparent"/>
+        </Border>
+
+        <!-- СТРОКА СОСТОЯНИЯ -->
+        <Border Grid.Row="2" Background="#1E1E1E" BorderBrush="#333333" BorderThickness="0,1,0,0">
+            <Grid Margin="20,0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+
+                <StackPanel Grid.Column="0" Orientation="Horizontal" VerticalAlignment="Center">
+                    <TextBlock Text="🟢" FontSize="12" VerticalAlignment="Center" Margin="0,0,5,0"/>
+                    <TextBlock x:Name="StatusMessageText" Text="Готов к работе" 
+                               Foreground="White" VerticalAlignment="Center"/>
+                </StackPanel>
+
+                <StackPanel Grid.Column="2" Orientation="Horizontal" VerticalAlignment="Center" Margin="15,0">
+                    <TextBlock Text="⏱️" FontSize="14" VerticalAlignment="Center" Margin="0,0,5,0"/>
+                    <TextBlock x:Name="TxtUptime" Text="00:00:00" FontWeight="Bold" 
+                               Foreground="White" VerticalAlignment="Center"/>
+                </StackPanel>
+
+                <TextBlock Grid.Column="3" Text="v1.0.0" Foreground="White" 
+                           VerticalAlignment="Center" Opacity="0.8" Margin="15,0,0,0"/>
+            </Grid>
+        </Border>
+    </Grid>
+</Window>
